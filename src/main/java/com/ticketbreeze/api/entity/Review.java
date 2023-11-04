@@ -8,26 +8,32 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "TICKET_TABLE")
-public class Ticket {
+@Table(name = "REVIEW_TABLE")
+public class Review {
+
     @Id
     @GeneratedValue
     private int id;
 
     @ManyToOne
-    @JoinColumn(name="event_id")
+    @JoinColumn(name = "event_id")
+    @JsonBackReference("event-reviews")
     private Event event;
 
     @ManyToOne
-    @JoinColumn(name="booking_id")
-    @JsonBackReference("booking-tickets")
-    private Booking booking;
-    private int seatNumber;
-    private String status;
-    private float price;
+    @JoinColumn(name = "user_id")
+    @JsonBackReference("user-reviews")
+    private User user;
+
+    private float rating;
+    private String comment;
+    private LocalDateTime localDateTime;
+
 
 }

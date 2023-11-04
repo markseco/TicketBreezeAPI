@@ -32,7 +32,7 @@ public class Booking {
     private User user;
 
     @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
+    @JsonManagedReference("booking-tickets")
     private List<Ticket> ticketList = new ArrayList<>();
 
     private LocalDateTime localDateTime;
