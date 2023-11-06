@@ -14,6 +14,9 @@ public class UserController {
     @Autowired
     private UserService service;
 
+    @GetMapping("/")
+    public String indexPage(){ return "Welcome to my TicketBreeze API"; }
+
     @GetMapping("/users")
     public List<User> findAllUsers(){
         return service.getAllUsers();
