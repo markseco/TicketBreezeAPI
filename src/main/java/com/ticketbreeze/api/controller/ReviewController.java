@@ -4,6 +4,7 @@ package com.ticketbreeze.api.controller;
 import com.ticketbreeze.api.entity.Review;
 import com.ticketbreeze.api.service.EventService;
 import com.ticketbreeze.api.service.ReviewService;
+import com.ticketbreeze.api.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +18,9 @@ public class ReviewController {
     @Autowired
     private EventService eventService;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/event/{eventId}/reviews")
     public List<Review> findReviewsForEvent(@PathVariable int eventId){
         return service.getReviewsByEventId(eventId);
@@ -27,9 +31,10 @@ public class ReviewController {
         return service.getReviewById(reviewId);
     }
 
-    @PostMapping("/event/{eventId}/review")
-    public Review addNewReview(@RequestBody Review review, @PathVariable int eventId){
+    @PostMapping("/event/{eventId}/review/{userId}")
+    public Review addNewReview(@RequestBody Review review, @PathVariable int eventId, @PathVariable int userId){
         review.setEvent(eventService.getEventById(eventId));
+        review.setUser(userService.getUserById(userId));
         return service.saveReview(review);
     }
 
