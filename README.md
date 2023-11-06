@@ -1,6 +1,7 @@
-# My REST API using Java Spring Boot, MySQL, JPA, and Hibernate
+# TicketBreezeAPI
 
-This is a RESTful API built using Java Spring Boot, MySQL, JPA, and Hibernate. It has been deployed on AWS using RDS for the database and Docker containers managed by AWS ECS.
+This is a RESTful API for a ticket management system where you can create users, events, book tickets for the events and add reviews for them as well. 
+It is built using Java Spring Boot, MySQL, JPA, and Hibernate. It has been deployed on AWS using RDS for the database and Docker containers managed by AWS ECS.
 
 ## Table of Contents
 
